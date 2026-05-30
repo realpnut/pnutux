@@ -1,6 +1,7 @@
 import json
 import os
 import random
+from datetime import date
 
 SAVE_FILE = "save.json"
 
@@ -9,7 +10,8 @@ default_data = {
     "level": 1,
     "name": "",
     "happiness": 50,
-    "uses": 0
+    "uses": 0,
+    "last_daily": ""
 }
 
 
@@ -37,76 +39,89 @@ if data["uses"] == 0:
     data["name"] = name
 
 data["uses"] += 1
-data["coins"] += 10
 
-print("\n=== TUX PET ===")
-print("your pet:", data["name"])
-print("coins:", data["coins"])
-print("happiness:", data["happiness"])
-print("times opened:", data["uses"])
+today = str(date.today())
 
-print("\nwhat do u wanna do?")
-print("1. show status")
-print("2. change name (cost 50 coins)")
-print("3. add happiness (cost 10 coins)")
-print("4. open a case (cost 25 coins)")
-print("5. exit")
+if data["last_daily"] != today:
+    data["coins"] += 10
+    data["last_daily"] = today
+    print("daily reward claimed! (+10 coins)")
 
-choice = input("> ")
+while True:
+    print("       _")
+    print("     ('v')")
+    print("    //-=-\\")
+    print("    (\_=_/)")
+    print("     ^^ ^^")
+    print("\n=== TUX PET ===")
+    print("your pet:", data["name"])
+    print("coins:", data["coins"])
+    print("happiness:", data["happiness"])
+    print("times opened:", data["uses"])
 
-if choice == "1":
-    print("\n=== STATUS ===")
-    print(data)
+    print("\nwhat do u wanna do?")
+    print("1. show status")
+    print("2. change name (cost 50 coins)")
+    print("3. add happiness (cost 10 coins)")
+    print("4. open a case (cost 25 coins)")
+    print("5. exit")
 
-elif choice == "2":
-    if data["coins"] >= 50:
-        name = input("new name: ")
+    choice = input("> ")
 
-        if name.strip() != "":
-            data["name"] = name
+    if choice == "1":
+        print("\n=== STATUS ===")
+        print(data)
 
-        data["coins"] -= 50
-        print("name changed!")
-    else:
-        print("not enough coins :(")
+    elif choice == "2":
+        if data["coins"] >= 50:
+            name = input("new name: ")
 
-elif choice == "3":
-    if data["coins"] >= 10:
-        data["happiness"] += 10
-        data["coins"] -= 10
-        print("your penguin is happier!")
-    else:
-        print("not enough coins")
+            if name.strip() != "":
+                data["name"] = name
 
-elif choice == "4":
-    if data["coins"] >= 25:
-        data["coins"] -= 25
-
-        print("opening a case...")
-        cas = random.randint(1, 100)
-
-        if cas == 100:
-            print("JACKPOT! You won 100 coins!")
-            data["coins"] += 100
-
-        elif cas >= 80:
-            print("You won 50 coins!")
-            data["coins"] += 50
-
-        elif cas >= 30:
-            print("You won 10 coins!")
-            data["coins"] += 10
-
+            data["coins"] -= 50
+            print("name changed!")
         else:
-            print("You didnt win anything!")
+            print("not enough coins :(")
+
+    elif choice == "3":
+        if data["coins"] >= 10:
+            data["happiness"] += 10
+            data["coins"] -= 10
+            print("your penguin is happier!")
+        else:
+            print("not enough coins")
+
+    elif choice == "4":
+        if data["coins"] >= 25:
+            data["coins"] -= 25
+
+            print("opening a case...")
+            cas = random.randint(1, 100)
+
+            if cas == 100:
+                print("JACKPOT! You won 100 coins!")
+                data["coins"] += 100
+
+            elif cas >= 80:
+                print("You won 50 coins!")
+                data["coins"] += 50
+
+            elif cas >= 30:
+                print("You won 10 coins!")
+                data["coins"] += 10
+
+            else:
+                print("You didnt win anything!")
+        else:
+            print("not enough coins")
+
+    elif choice == "5":
+        save(data)
+        print("bye")
+        break
 
     else:
-        print("not enough coins")
+        print("invalid option")
 
-elif choice == "5":
-    print("bye")
-
-else:
-    print("invalid option")
-
-save(data)
+    save(data)
