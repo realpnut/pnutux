@@ -1,5 +1,6 @@
 import json
 import os
+import time
 import random
 from datetime import date
 
@@ -48,11 +49,25 @@ if data["last_daily"] != today:
     print("daily reward claimed! (+10 coins)")
 
 while True:
-    print("       _")
-    print("     ('v')")
-    print("    //-=-\\")
-    print("    (\_=_/)")
-    print("     ^^ ^^")
+    if data["happiness"] <= 20:
+        print("       _")
+        print("     (╥_╥)")
+        print("    //-=-\\\\")
+        print("    (\\_=_/)")
+        print("     ^^ ^^")
+    elif 21 <= data["happiness"] <= 79:
+        print("       _")
+        print("     (`-`)")
+        print("    //-=-\\\\")
+        print("    (\\_=_/)")
+        print("     ^^ ^^")
+    else:
+        print("       _")
+        print("     (`v`)")
+        print("    //-=-\\\\")
+        print("    (\\_=_/)")
+        print("     ^^ ^^")
+
     print("\n=== TUX PET ===")
     print("your pet:", data["name"])
     print("coins:", data["coins"])
@@ -64,7 +79,8 @@ while True:
     print("2. change name (cost 50 coins)")
     print("3. add happiness (cost 10 coins)")
     print("4. open a case (cost 25 coins)")
-    print("5. exit")
+    print("5. talk to the penguin")
+    print("6. exit")
 
     choice = input("> ")
 
@@ -97,6 +113,8 @@ while True:
             data["coins"] -= 25
 
             print("opening a case...")
+            time.sleep(1)
+
             cas = random.randint(1, 100)
 
             if cas == 100:
@@ -117,11 +135,102 @@ while True:
             print("not enough coins")
 
     elif choice == "5":
+        print("1. Compliment the penguin")
+        print("2. Be mean")
+        print("3. Flirt")
+        print("4. Tell a joke")
+        print("5. Stare at penguin")
+
+        choi = input("Choose: ")
+
+        if choi == "1":
+            print("You tell penguin he is the best bird...\n")
+            time.sleep(2)
+            print("Penguin is happier now!")
+            print("       _")
+            print("     (·u·)")
+            print("    //-=-\\\\")
+            print("    (\\_=_/)")
+            print("     ^^ ^^")
+            data["happiness"] += 5
+
+        elif choi == "2":
+            print("You tell penguin he is too heavy to fly...\n")
+            time.sleep(2)
+            print("Why are you so mean to him?")
+            print("       _")
+            print("     (╥_╥)")
+            print("    //-=-\\\\")
+            print("    (\\_=_/)")
+            print("     ^^ ^^")
+            data["happiness"] -= 15
+
+        elif choi == "3":
+            print("You flirt with penguin...\n")
+            time.sleep(1)
+            print("You dont know the result...")
+            print("       _")
+            print("     (~v~)")
+            print("    //-=-\\\\")
+            print("    (\\_=_/)")
+            print("     ^^ ^^")
+
+            flr = random.randint(0, 1)
+
+            if flr == 0:
+                print("Penguin liked it!")
+                data["happiness"] += 20
+            else:
+                print("Penguin got uncomfortable...")
+                data["happiness"] -= 10
+
+        elif choi == "4":
+            print("You tell penguin a joke...\n")
+            time.sleep(2)
+
+            joke = random.randint(0, 10)
+
+            if joke <= 9:
+                print("The joke was good and penguin laughed!")
+                print("       _")
+                print(" .·°՞(˃ᗜ˂)՞°·.")
+                print("    //-=-\\\\")
+                print("    (\\_=_/)")
+                print("     ^^ ^^")
+                data["happiness"] += 10
+                time.sleep(0.2)
+            else:
+                print("Couldn't you think of a better joke..?")
+                print("       _")
+                print("     (`-`)")
+                print("    //-=-\\\\")
+                print("    (\\_=_/)")
+                print("     ^^ ^^")
+                data["happiness"] -= 5
+                time.sleep(0.4)
+
+        elif choi == "5":
+            print("You stared at penguin...\n")
+            time.sleep(3)
+            print("The penguin stared back!")
+            print("       _")
+            print("     (⏺_⏺)")
+            print("    //-=-\\\\")
+            print("    (\\_=_/)")
+            print("     ^^ ^^")
+
+        else:
+            print("Wrong answer!")
+            time.sleep(1)
+
+    elif choice == "6":
         save(data)
         print("bye")
         break
 
     else:
         print("invalid option")
+
+    data["happiness"] = max(0, min(100, data["happiness"]))
 
     save(data)
