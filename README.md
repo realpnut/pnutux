@@ -1,4 +1,12 @@
-# tux pet v0.1.2 or v0.1.3 (or maybe even v0.2.0, i stopped counting)
+# tux pet v0.2.1
+
+### installation
+```bash
+pipx install pnutux
+pnutux
+```
+
+### ___________________________________________________________________________________________________________________________
 
 i actually updated the code because the level system did literally nothing. now you can throw your hard-earned coins at virtual fish and buy levels like a boss. 
 
