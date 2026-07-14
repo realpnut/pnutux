@@ -8,7 +8,9 @@ version = "0.2.0"
 description = "the ultimate penguin simulator with zero features and 100% gambling addiction"
 readme = "README.md"
 requires-python = ">=3.8"
-dependencies = []
 
 [project.scripts]
-tuxpet = "tuxpet.main:run_game"
+pnutux = "tux.main:run_game"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tux"]
