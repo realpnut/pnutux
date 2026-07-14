@@ -13,7 +13,7 @@ i actually updated the code because the level system did literally nothing. now 
 also added some screen clearing stuff so the terminal doesnt look like a complete mess anymore.
 
 ### how to run
-`python main.py` (make sure you are in the same folder as `save.json` or it will create a new bird)
+`pnutux`
 
 ### what is new
 - **THE SHOP IS REAL (option 6)** - you can now buy:
