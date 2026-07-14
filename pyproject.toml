@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "tuxpet"
+name = "pnutux"
 version = "0.2.0"
 description = "the ultimate penguin simulator with zero features and 100% gambling addiction"
 readme = "README.md"
