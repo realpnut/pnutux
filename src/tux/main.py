@@ -101,13 +101,13 @@ def run_game():
             print(" ^^ ^^ ")
         elif 21 <= data["happiness"] <= 79:
             print("   _   ")
-            print(" ( - ) ")
+            print(" (´-´) ")
             print("//-=-\\\\")
             print("(\\_=_/)")
             print(" ^^ ^^ ")
         else:
             print("   _   ")
-            print(" ( v ) ")
+            print(" (^v^) ")
             print("//-=-\\\\")
             print("(\\_=_/)")
             print(" ^^ ^^ ")
@@ -235,7 +235,7 @@ def run_game():
                 else:
                     print("Couldn't you think of a better joke..?")
                     print("   _   ")
-                    print(" ( - ) ")
+                    print(" (´-´) ")
                     print("//-=-\\\\")
                     print("(\\_=_/)")
                     print(" ^^ ^^ ")
