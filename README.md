@@ -1,4 +1,4 @@
-# tux pet v0.3.0
+# tux pet v0.4.0
 
 ### installation
 ```bash
@@ -10,13 +10,10 @@ pnutux
 `pnutux`
 
 ### what is new
-- **DEPRESSION SYSTEM IS REAL (time decay)** - your penguin now has a memory. if you close the game and go touch grass for a few hours, he will miss you. every hour offline = -2 happiness. don't leave him alone too long or he will look very sad in ascii.
-- **FISHING MINI-GAME (option 5)** - stop being poor. you can now actually go to the fishing hole and catch fish based on your literal reaction time. 
-  - press Enter the exact millisecond `!!! PULL NOW !!!` pops up.
-  - if you are faster than 0.45s -> big fat fih + massive coins (15-30).
-  - if you are slow -> fish steals bait and you get 0. 
-- **No multithreading? No problem** - the reaction test uses a basic blocking `input()` because we are lazy and it perfectly stops the execution without burning 100% of your CPU.
-- **Fixed menu numbers** - clean UI now includes the fishing game, talking options, and the shop without overlapping choices.
+- **a nice penguin can now just randomly give ur penguin 200 coins**
+  wow!!!
+- **small repairs**
+  penguin wont be faceless now
 
 ---
 
