@@ -45,6 +45,8 @@ def apply_time_decay(data):
     except ValueError:
         pass
 
+
+
 def play_fishing_game(data):
     os.system("cls" if os.name == "nt" else "clear")
     print("=== FISHING HOLE ===")
@@ -73,6 +75,11 @@ def play_fishing_game(data):
 def run_game():
     data = load()
     apply_time_decay(data)
+
+    event = random.randint(1,1000)
+    if event == 420:
+        print("A mysterious penguin gave you 200 coins!")
+        data["coins"] += 200
 
     if data["uses"] == 0:
         print("yo this is ur first time opening the game")
